@@ -1,0 +1,40 @@
+---
+import ApplicationForm from './react/ApplicationForm.tsx';
+import { SITE } from '../lib/constants';
+---
+<section id="basvuru" class="section relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-accent-400/10"></div>
+  <div class="absolute -top-20 right-0 w-72 h-72 rounded-full bg-brand-200/30 blur-3xl"></div>
+  <div class="container-x relative grid lg:grid-cols-12 gap-8 lg:gap-10">
+    <div class="lg:col-span-5">
+      <span class="chip">Başvuru</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold">Birebir özel ders için başvuru yapın...</h2>
+      <p class="mt-3 text-slate-600">
+        Bilgilerinizi iletin en kısa sürede sizinle iletişime geçip tercih ettiğiniz seviyeye ve hedefe uygun bir program oluşturalım...
+      </p>
+      <ul class="mt-6 space-y-3 text-sm text-slate-700">
+        {[
+          'Ücretsiz ön görüşme ve ihtiyaç analizi',
+          'Kişiye özel haftalık program',
+          'Düzenli ölçme & değerlendirme',
+        ].map((t) => (
+          <li class="flex items-center gap-2">
+            <span class="grid place-items-center w-5 h-5 rounded-full bg-brand-100 text-brand-700">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+            {t}
+          </li>
+        ))}
+      </ul>
+      <a href={`https://wa.me/${SITE.whatsappNumber}`} target="_blank" rel="noopener" class="btn-whatsapp mt-8">
+        <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.04 5.33c-5.86 0-10.62 4.76-10.62 10.62 0 1.87.49 3.7 1.42 5.31L5.33 27l5.86-1.53a10.6 10.6 0 0 0 4.85 1.16c5.86 0 10.62-4.76 10.62-10.62S21.9 5.33 16.04 5.33z"/></svg>
+        WhatsApp'tan da yazabilirsiniz
+      </a>
+    </div>
+    <div class="lg:col-span-7">
+      <div class="rounded-3xl border border-slate-200 bg-white shadow-soft p-6 sm:p-8">
+        <ApplicationForm client:load />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,123 @@
+---
+import '../styles/global.css';
+import { SITE } from '../lib/constants';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  showChrome?: boolean;
+}
+
+const {
+  title = `${SITE.name} | ${SITE.teacher} - Birebir Özel Ders & Eğitim Danışmanlığı | Konya`,
+  description = 'Konya\'da Mehmet Keleş ile İlkokul, Ortaokul, Lise ve Üniversite hazırlık seviyelerinde birebir özel ders. LGS, TYT, AYT, DGS, KPSS sınavlarına profesyonel hazırlık ve eğitim danışmanlığı. Matematik, Geometri, Fen, Fizik, Türkçe, Edebiyat.',
+  showChrome = true,
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://mehmetkeles-site.vercel.app';
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL('/icon.svg', siteUrl).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: SITE.name,
+  alternateName: 'Merkür Akademi',
+  founder: { '@type': 'Person', name: SITE.teacher, jobTitle: SITE.role },
+  telephone: SITE.phoneIntl,
+  email: SITE.email,
+  url: siteUrl,
+  logo: ogImage,
+  image: ogImage,
+  areaServed: { '@type': 'City', name: 'Konya' },
+  description,
+  sameAs: [`https://wa.me/${SITE.whatsappNumber}`],
+  address: [
+    { '@type': 'PostalAddress', streetAddress: SITE.office, addressLocality: 'Meram', addressRegion: 'Konya', addressCountry: 'TR' },
+    { '@type': 'PostalAddress', streetAddress: SITE.home, addressLocality: 'Selçuklu', addressRegion: 'Konya', addressCountry: 'TR' },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SITE.phoneIntl,
+    contactType: 'customer service',
+    areaServed: 'TR',
+    availableLanguage: ['Turkish'],
+  },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: siteUrl },
+  ],
+};
+---
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="özel ders Konya, matematik özel ders Konya, matematik öğretmeni Konya, Mehmet Keleş, Merkür Eğitim Akademisi, LGS hazırlık Konya, TYT hazırlık, AYT hazırlık, DGS hazırlık, KPSS hazırlık, birebir özel ders, online özel ders, eğitim danışmanlığı Konya, geometri özel ders, fen özel ders, fizik özel ders, Meram özel ders, Selçuklu özel ders" />
+    <meta name="author" content={SITE.teacher} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    {import.meta.env.GOOGLE_SITE_VERIFICATION && (
+      <meta name="google-site-verification" content={import.meta.env.GOOGLE_SITE_VERIFICATION} />
+    )}
+    {import.meta.env.BING_SITE_VERIFICATION && (
+      <meta name="msvalidate.01" content={import.meta.env.BING_SITE_VERIFICATION} />
+    )}
+    {import.meta.env.YANDEX_VERIFICATION && (
+      <meta name="yandex-verification" content={import.meta.env.YANDEX_VERIFICATION} />
+    )}
+    <meta name="language" content="Turkish" />
+    <meta name="geo.region" content="TR-42" />
+    <meta name="geo.placename" content="Konya" />
+    <meta name="theme-color" content="#0891b2" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="alternate icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="mask-icon" href="/icon.svg" color="#0891b2" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${SITE.name} logosu`} />
+    <meta property="og:image:type" content="image/svg+xml" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#1f86b8" />
+    <meta name="msapplication-TileImage" content="/icon.svg" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

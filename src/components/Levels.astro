@@ -1,0 +1,29 @@
+---
+const levels = [
+  { title: 'İlkokul', detail: '1-4. Sınıflar', focus: 'Temel Matematik, Yeni Nesil Soru Çözme, Okuma ve Anlama Becerileri' },
+  { title: 'Ortaokul', detail: '5-8. Sınıflar (LGS)', focus: 'Tüm sınıflarda LGS odaklı Matematik, Fen Bilimleri, Türkçe, İngilizce, Eğitim Danışmanlığı.. Ve okul başarısı desteği...' },
+  { title: 'Lise', detail: '9-12. Sınıflar (YKS)', focus: 'Tüm sınıflarda okul başarısı desteği ve YKS hazırlık sürecinde TYT-AYT birebir veya grup şeklinde akademik dersler' },
+  { title: 'Üniversite ve Sınav', detail: 'Sınava hazırlık', focus: 'DGS, KPSS ve diğer kurum sınavlarına hazırlık...' },
+];
+---
+<section id="seviyeler" class="section">
+  <div class="container-x">
+    <div class="max-w-2xl">
+      <span class="chip">Seviyeler</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold">Tüm seviyelere uygun program</h2>
+      <p class="mt-3 text-slate-600">İlkokuldan üniversite sınavlarına kadar her aşamada profesyonel destek.</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {levels.map((l, i) => (
+        <div class="relative rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-soft hover:-translate-y-1 transition">
+          <span class="absolute top-6 right-6 text-xs font-display text-slate-300">0{i + 1}</span>
+          <h3 class="text-xl font-display font-semibold text-slate-900">{l.title}</h3>
+          <div class="mt-1 text-xs font-medium text-brand-700">{l.detail}</div>
+          <p class="mt-4 text-sm text-slate-600 leading-relaxed">{l.focus}</p>
+          <div class="mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-brand-500 to-accent-400"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

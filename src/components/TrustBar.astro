@@ -1,0 +1,13 @@
+---
+const badges = ['LGS', 'TYT', 'AYT', 'YKS', 'DGS', 'KPSS'];
+---
+<section aria-label="Sınav hazırlık alanları" class="border-y border-slate-100 bg-white">
+  <div class="container-x py-6 flex flex-col sm:flex-row items-center gap-6 justify-between">
+    <div class="text-xs uppercase tracking-[0.18em] text-slate-500 font-semibold">Hazırlık Verdiğimiz Sınavlar</div>
+    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      {badges.map((b) => (
+        <span class="inline-flex items-center justify-center min-w-[64px] rounded-lg border border-brand-100 bg-gradient-to-b from-white to-brand-50 px-3 py-1.5 text-sm font-display font-semibold text-brand-800 shadow-sm">{b}</span>
+      ))}
+    </div>
+  </div>
+</section>

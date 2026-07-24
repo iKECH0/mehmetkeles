@@ -1,0 +1,77 @@
+---
+import { SITE } from '../lib/constants';
+const links = [
+  { href: '#hakkinda', label: 'Hakkımızda' },
+  { href: '#hizmetler', label: 'Hizmetler' },
+  { href: '#seviyeler', label: 'Seviyeler' },
+  { href: '#neden-biz', label: 'Neden Biz' },
+  { href: '#ogretmen-basvuru', label: 'Kariyer' },
+  { href: '#iletisim', label: 'İletişim' },
+];
+---
+<div class="hidden md:block bg-gradient-to-r from-brand-700 via-brand-600 to-brand-700 text-white">
+  <div class="container-x flex items-center justify-between h-9 text-xs">
+    <div class="flex items-center gap-5">
+      <a href={`tel:${SITE.phoneIntl}`} class="inline-flex items-center gap-1.5 hover:text-accent-400 transition">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.09 1A19 19 0 0 1 2 4.09 1 1 0 0 1 3 3h4.09a1 1 0 0 1 1 .75l1 4a1 1 0 0 1-.27 1L7 10.5a16 16 0 0 0 6.5 6.5l1.75-1.82a1 1 0 0 1 1-.27l4 1a1 1 0 0 1 .75 1z"/></svg>
+        {SITE.phoneDisplay}
+      </a>
+      <span class="inline-flex items-center gap-1.5 text-brand-100">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+        Meram / Selçuklu / Karatay - KONYA
+      </span>
+    </div>
+    <div class="text-brand-100">İlkokul • Ortaokul • Lise • LGS / TYT / AYT / DGS / KPSS</div>
+  </div>
+</div>
+<header class="sticky top-0 z-40 backdrop-blur bg-white/85 border-b border-slate-100">
+  <div class="container-x flex items-center justify-between h-[68px]">
+    <a href="/" class="flex items-center gap-2.5 sm:gap-3 group overflow-hidden" aria-label={SITE.name}>
+      <img src="/icon.svg" alt={`${SITE.name} logosu`} width="44" height="44" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0" />
+      <span class="flex flex-col leading-tight overflow-hidden">
+        <span class="text-[13px] sm:text-[15px] font-display font-semibold text-slate-900 tracking-tight truncate">{SITE.name}</span>
+        <span class="text-[9px] sm:text-[11px] text-brand-700 font-medium truncate">{SITE.teacher}</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7">
+      {links.map((l) => (
+        <a href={l.href} class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="#basvuru" class="hidden sm:inline-flex btn-primary px-4 py-2 text-xs">Başvuru Yap</a>
+      <a href={`tel:${SITE.phoneIntl}`} class="btn-outline px-4 py-2 text-xs hidden md:inline-flex">{SITE.phoneDisplay}</a>
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100" aria-label="Menü">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white">
+    <div class="container-x py-3 flex flex-col gap-1">
+      <div class="mb-3 px-3 py-3 bg-brand-50 rounded-xl">
+        <div class="flex items-center gap-2 text-brand-700 text-sm font-medium mb-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.09 1A19 19 0 0 1 2 4.09 1 1 0 0 1 3 3h4.09a1 1 0 0 1 1 .75l1 4a1 1 0 0 1-.27 1L7 10.5a16 16 0 0 0 6.5 6.5l1.75-1.82a1 1 0 0 1 1-.27l4 1a1 1 0 0 1 .75 1z"/></svg>
+          <a href={`tel:${SITE.phoneIntl}`}>{SITE.phoneDisplay}</a>
+        </div>
+        <div class="flex items-start gap-2 text-brand-700/80 text-xs">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+          Meram / Selçuklu / Karatay - KONYA
+        </div>
+      </div>
+      {links.map((l) => (
+        <a href={l.href} class="px-3 py-3 rounded-lg text-[15px] font-medium text-slate-700 hover:bg-slate-50">{l.label}</a>
+      ))}
+      <a href="#basvuru" class="mt-2 px-3 py-3 rounded-xl text-[15px] text-center font-semibold text-white bg-brand-600 shadow-soft">Başvuru Yap</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>

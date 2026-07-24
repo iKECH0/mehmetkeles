@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdminPanel from '../../components/react/AdminPanel.tsx';
+import { SITE } from '../../lib/constants';
+
+export const prerender = false;
+---
+<BaseLayout title="Yönetim Paneli | Merkür Eğitim Akademisi">
+  <header class="border-b border-slate-200 bg-white sticky top-0 z-30">
+    <div class="container-x flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/icon.svg" alt={SITE.name} width="40" height="40" class="w-10 h-10 object-contain" />
+        <div class="leading-tight">
+          <div class="text-sm font-display font-semibold text-slate-900">{SITE.name}</div>
+          <div class="text-[11px] text-brand-700 font-medium">Yönetim Paneli</div>
+        </div>
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="/" class="btn-outline px-3 py-2 text-xs">Siteyi Görüntüle</a>
+        <form method="POST" action="/api/admin/logout">
+          <button class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:border-rose-300 hover:text-rose-700 transition" type="submit">Çıkış</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="bg-slate-50 min-h-[calc(100vh-4rem)] py-8">
+    <div class="container-x">
+      <AdminPanel client:load />
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,13 @@
+{
+  "name": "Merkür Eğitim Akademisi",
+  "short_name": "Merkür Akademi",
+  "description": "Mehmet Keleş ile birebir özel ders ve eğitim danışmanlığı - Konya",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0891b2",
+  "lang": "tr",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const prerender = false;
+
+const error = Astro.url.searchParams.get('error');
+if (Astro.locals.isAdmin) {
+  return Astro.redirect('/admin');
+}
+---
+<BaseLayout title="Yönetim Girişi | Merkür Eğitim Akademisi" showChrome={false}>
+  <main class="min-h-screen grid place-items-center bg-gradient-to-br from-brand-50 via-white to-accent-400/10 px-4">
+    <div class="w-full max-w-md">
+      <a href="/" class="flex items-center justify-center gap-3 mb-8">
+        <img src="/icon.svg" alt="Merkür Eğitim Akademisi" width="48" height="48" class="w-12 h-12 object-contain" />
+        <span class="font-display font-semibold text-slate-900">Merkür Eğitim Akademisi</span>
+      </a>
+      <div class="rounded-3xl border border-slate-200 bg-white shadow-soft p-8">
+        <h1 class="text-2xl font-bold">Yönetim Girişi</h1>
+        <p class="mt-1 text-sm text-slate-600">Başvuruları görüntülemek için yönetici parolasını girin.</p>
+        <form method="POST" action="/api/admin/login" class="mt-6 space-y-4">
+          <div>
+            <label class="label" for="password">Parola</label>
+            <input id="password" name="password" type="password" class="input" required autofocus autocomplete="current-password" />
+          </div>
+          {error && (
+            <div class="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+              Parola hatalı. Lütfen tekrar deneyin.
+            </div>
+          )}
+          <button type="submit" class="btn-primary w-full">Giriş Yap</button>
+        </form>
+        <a href="/" class="mt-6 block text-center text-xs text-slate-500 hover:text-brand-700">← Siteye dön</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

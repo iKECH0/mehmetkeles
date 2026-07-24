@@ -1,0 +1,84 @@
+---
+const services = [
+  {
+    title: 'Birebir Özel Ders',
+    desc: 'Tamamen Kişiye Özel, hedefe yönelik, farklı branşlarda birebir akademik özel ders',
+    icon: 'user',
+  },
+  {
+    title: 'Matematik Röntgeni Analizleri',
+    desc: 'Öğrencilerimizin hangi konuda ne düzeyde olduklarını detaylı bir şekilde analiz edebilme imkanı',
+    icon: 'scan',
+  },
+  {
+    title: '3-4 kişilik Online Ders Paketleri',
+    desc: '5,6,7 ve 8. Sınıflar için özel ders tadında mini vip gruplar şeklinde Matematik, Fen Bilgisi, Türkçe, İngilizce ve Eğitim Danışmanlığı derslerini içeren online ders konsepti..',
+    icon: 'users',
+  },
+  {
+    title: 'Profesyonel Eğitim Danışmanlığı',
+    desc: 'Doğru hedef, doğru kaynak, doğru çalışma planı için interaktif etkileşimli program üzerinden etkili rehberlik hizmeti ve uzmanlar eşliğinde veli-ögrenci seminerleri...',
+    icon: 'compass',
+  },
+  {
+    title: 'Sınava Hazırlık (LGS/YKS/DGS/KPSS/ALES)',
+    desc: 'Başta LGS ve YKS öğrencilerimiz olmak üzere DGS, KPSS ve ALES düzeyinde sınavlara hazırlık desteği. Ara sınıflarımız için ders takviyeleri, yazılılara hazırlık desteği',
+    icon: 'target',
+  },
+  {
+    title: 'Çoklu Branş Desteği',
+    desc: 'Matematik, Geometri, Fizik, Fen Bilimleri, Edebiyat, Türkçe, İngilizce vb. branşlarda birebir veya grup şeklinde, yüzyüze veya online ders imkanı... Ayrıca Hızlı Okuma, Resim vb kişisel gelişim kurs imkanı...',
+    icon: 'book',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  user: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+  scan: 'M3 7V5a2 2 0 0 1 2-2h2 M17 3h2a2 2 0 0 1 2 2v2 M21 17v2a2 2 0 0 1-2 2h-2 M7 21H5a2 2 0 0 1-2-2v-2 M7 12h10',
+  users: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+  compass: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M16.24 7.76L14.12 14.12 7.76 16.24 9.88 9.88z',
+  target: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+  book: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z',
+};
+---
+<section id="hizmetler" class="section bg-slate-50/60">
+  <div class="container-x">
+    <div class="max-w-2xl">
+      <span class="chip">Hizmetler</span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold">Akademik başarıyı destekleyen hizmetler</h2>
+      <p class="mt-3 text-slate-600">Her seviye ve hedefe yönelik, ölçülebilir sonuçlar üreten ders ve danışmanlık çözümleri.</p>
+    </div>
+
+    <div class="mt-10 relative rounded-3xl overflow-hidden border border-slate-100 shadow-soft bg-white">
+      <div class="grid md:grid-cols-2 items-stretch">
+        <div class="relative h-64 md:h-auto overflow-hidden">
+          <img src="/image4.png" alt="Online canlı ders" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/0 md:to-white"></div>
+        </div>
+        <div class="p-8 sm:p-10 flex flex-col justify-center">
+          <span class="chip self-start">Online Eğitim</span>
+          <h3 class="mt-3 text-2xl font-display font-bold text-slate-900">Tüm Türkiye'ye birebir online ders imkanı</h3>
+          <p class="mt-3 text-slate-600 leading-relaxed">İnteraktif yazı tahtası, kayıt altına alınan dersler ve düzenli ölçüm raporları ile yüz yüze derslerle aynı verim, mekândan bağımsız esneklik.</p>
+          <a href="#basvuru" class="mt-5 inline-flex items-center gap-2 text-brand-700 font-semibold hover:text-brand-800">
+            Online Ders İçin Başvur <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((s) => (
+        <div class="card group">
+          <div class="grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-soft">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={iconPaths[s.icon]}/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">{s.title}</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">{s.desc}</p>
+          <div class="mt-4 inline-flex items-center gap-1 text-sm text-brand-700 font-medium opacity-0 group-hover:opacity-100 transition">
+            Detay <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

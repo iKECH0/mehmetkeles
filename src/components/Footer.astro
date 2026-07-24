@@ -1,0 +1,41 @@
+---
+import { SITE } from '../lib/constants';
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-slate-100 bg-slate-50">
+  <div class="container-x py-12 grid gap-8 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3">
+        <img src="/icon.svg" alt={`${SITE.name} logosu`} width="44" height="44" class="w-11 h-11 object-contain" />
+        <div class="leading-tight">
+          <div class="font-display font-semibold text-slate-900">{SITE.name}</div>
+          <div class="text-[11px] text-brand-700">{SITE.teacher}</div>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-slate-600 max-w-md">
+        Merkür Eğitim Akademisi — Profesyonel Eğitim ve Danışmanlık.<br/>
+        İlkokul, Ortaokul, Lise ve Sınav Hazırlık seviyelerinde birebir özel ders ve eğitim danışmanlığı.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-slate-900 mb-3">İletişim</h4>
+      <ul class="space-y-2 text-sm text-slate-600">
+        <li><a class="hover:text-brand-700" href={`tel:${SITE.phoneIntl}`}>{SITE.phoneDisplay}</a></li>
+        <li><a class="hover:text-brand-700" href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-slate-900 mb-3">Hizmet Bölgesi</h4>
+      <ul class="space-y-2 text-xs text-slate-600">
+        <li>Meram / Selçuklu / Karatay - KONYA</li>
+        <li>Tüm Türkiye'ye Online Eğitim İmkanı</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-200">
+    <div class="container-x py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <span>© {year} {SITE.name}. Tüm hakları saklıdır.</span>
+      <a href="/admin/login" class="hover:text-brand-700">Yönetim</a>
+    </div>
+  </div>
+</footer>
