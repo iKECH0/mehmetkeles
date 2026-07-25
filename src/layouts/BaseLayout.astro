@@ -52,6 +52,13 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: siteUrl },
   ],
 };
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: siteUrl,
+};
 ---
 <!doctype html>
 <html lang="tr">
@@ -65,6 +72,7 @@ const breadcrumbLd = {
     <meta name="author" content={SITE.teacher} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="google-site-verification" content="zHTdHXHx_XaXYN2f6dSUivUXPfsz9Nio5edza56jWDk" />
     {import.meta.env.GOOGLE_SITE_VERIFICATION && (
       <meta name="google-site-verification" content={import.meta.env.GOOGLE_SITE_VERIFICATION} />
     )}
@@ -116,6 +124,7 @@ const breadcrumbLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
   </head>
   <body>
     <slot />
